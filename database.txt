@@ -1,0 +1,40 @@
+create database dtet;
+
+use dtet;
+
+create table student(
+    nic char(12),
+    name char(75),
+    primary key (nic)
+);
+
+insert into student values (
+    "200012000080", "Dilshan Madusanka"
+);
+
+create table certificate(
+    serial char(12),
+    nic char(12),
+    certificate char(100),
+    type char(10),
+    dateReceived date,
+    status char(15),
+    primary key (serial),
+    foreign key(nic) references student(nic)
+);
+insert into certificate values (
+    "000156", "200012000080", "Graphic Design NVQ Level 4", "NVQ", '2021-01-30', "Issued"
+);
+insert into certificate values (
+    "000158", "200012000080", "ICT NVQ Level 4", "NVQ", '2022-01-30', "Received"
+);
+
+create table user(
+    username char(50),
+    password char(120),
+    primary key(username)
+);
+
+insert into user values ("Admin", "4e7afebcfbae000b22c7c85e5560f89a2a0280b4");
+
+
