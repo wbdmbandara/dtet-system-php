@@ -5,12 +5,23 @@ if(!isset($_SESSION['username'])){
   // header("Location:dashboard.php");
   header("Location:login.html");
 }
-
-if(isset($_POST['submit'])){
+$msg = "";
+if(isset($_POST['submit']) && $_POST['nic'] != "" && $_POST['name'] != "" ){
     $nic = $_POST['nic'];
     $name = $_POST['name'];
 
-    $sql = 
+    // insert into student values ("200012000080", "Dilshan Madusanka");
+    $sql = "insert into student values ('" . $nic . "', '" . $name . "')";
+    $result = mysqli_query($conn, $sql);
+
+    if(isset($result)){
+        $msg = "Student Details inserted Successfully!";
+    }else{
+        $msg = "Student details insert failed!";
+    }
+
+}else{
+   $msg = "Please fill below form"; 
 }
 
 
@@ -24,6 +35,7 @@ if(isset($_POST['submit'])){
     <title>Student</title>
 </head>
 <body>
+    <?php echo $msg; ?> <br>
     <a href="dashboard.php">Back to Dashboard</a>
     <form action="student.php" method="post">
         <label for="">NIC :</label>
@@ -32,5 +44,6 @@ if(isset($_POST['submit'])){
         <input type="text" name="name" id=""> <br>
         <input type="submit" name="submit" value="Save">
     </form>
+
 </body>
 </html>

@@ -14,9 +14,8 @@ if(!isset($_SESSION['username'])){
   </head>
   <body>
     <a href="student.php">Student</a><br>
-    <a href="search-student.php">Search Student</a><br>
+    <a href="search-student.html">Search Student</a><br>
     <a href="new-certificate.php">New Certificate</a><br>
-    <a href="update-certificate.php">Update Certificate</a><br>
     <a href="delete-certificate.php">Delete Certificate</a><br>
   </body>
 </html>
